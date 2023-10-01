@@ -8,6 +8,7 @@ import JobProposalsNumber from './../SectionCenterTalentHome/JobProposalsNumber'
 
 export default function JobDescriptionJobDetails({ job }) {
   const lang = useSelector(state => state.lang);
+  console.log(job);
 
   const { t } = useTranslation();
   return (

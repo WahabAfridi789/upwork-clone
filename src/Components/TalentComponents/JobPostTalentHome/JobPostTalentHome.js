@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function JobPostTalentHome() {
 
-  const { push } = useNavigate();
+  const navigation = useNavigate();
 
   const clickHandler = () => {
-    push("/job/");
+    navigation("/job-details");
+    
   }
 
   return (

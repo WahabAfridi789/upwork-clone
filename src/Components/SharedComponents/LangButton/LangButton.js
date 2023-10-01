@@ -23,6 +23,7 @@ export default function LangButton() {
 
     return (
         <Link
+        to="#"
             className="btn btn-warning"
             style={{ width: "70px", position: "fixed", top: "50%", transform: "translateY(-50%)", zIndex: "99999" }}
             onClick={change}

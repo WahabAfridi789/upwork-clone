@@ -63,7 +63,7 @@ export default function SearchBarJobsTalent(props) {
           className={`form-control text-dark bg-white ${lang =='ar' ?"rounded-end" :  "rounded-start"}`}
           placeholder={t("Search For Jobs")}
         />
-        <Link onClick={searchDatabase}>
+        <Link to="" onClick={searchDatabase}>
           <button
             id="search-button"
             type="button"

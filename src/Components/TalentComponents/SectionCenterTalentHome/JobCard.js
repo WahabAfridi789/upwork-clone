@@ -6,6 +6,7 @@ import StarsRating from '../../SharedComponents/StarsRating/StarsRating'
 import JobProposalsNumber from './JobProposalsNumber'
 
 export default function JobCard({ item, saveJob, user, lang }) {
+    console.log(item.jobID);
   return (
     <div>
       <div className="list-group-item p-4">

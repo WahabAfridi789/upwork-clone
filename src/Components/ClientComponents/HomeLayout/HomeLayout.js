@@ -26,14 +26,33 @@ export default function HomeLayout() {
   const dispatch = useDispatch();
   const [proposals, setProposals] = useState(0);
 
-  useEffect(async () => {
-    dispatch(clientDataAction());
-    dispatch(clientJobsAction("authID", "==", auth.currentUser.uid));
-    await db.collection("job").doc(jobs[0]?.docID).collection("proposals").get().then(res => {
+//   useEffect(async () => {
+//     dispatch(clientDataAction());
+//     dispatch(clientJobsAction("authID", "==", auth.currentUser.uid));
+//     await db.collection("job").doc(jobs[0]?.docID).collection("proposals").get().then(res => {
+//       const length = res.docs.length;
+//       setProposals(length)
+//     })
+//   }, []);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      dispatch(clientDataAction());
+      dispatch(clientJobsAction("authID", "==", auth.currentUser.uid));
+
+      const res = await db.collection("job").doc(jobs[0]?.docID).collection("proposals").get();
       const length = res.docs.length;
-      setProposals(length)
-    })
-  }, []);
+      setProposals(length);
+    } catch (error) {
+      // Handle any errors here
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
 
   const job = jobs[0]?.data;

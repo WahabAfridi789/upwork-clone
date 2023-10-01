@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
+import {  useLocation } from 'react-router-dom';
 
 export default function JobLink() {
   let his = useNavigate()
+   const location = useLocation();
 
   const [state, setstate] = useState({
-    value: `http://localhost:3000${his.location.pathname}`,
+    value: `http://localhost:3000${location.pathname}`,
     copied: false,
   });
 

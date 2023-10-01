@@ -54,6 +54,7 @@ switch (txt) {
           aria-current="true" style={{ background: '#F1F2F4' }}
         >
           <Link
+          to="#"
             className=" list-group-item-action sidebar-homebage-ul-li-aa activeside"
             aria-current="true" style={{ background: '#F1F2F4', fontSize: '14px' }}
             onClick={()=>switchJobs("My Feed")}
@@ -66,7 +67,7 @@ switch (txt) {
           aria-current="true" style={{ background: '#F1F2F4' }}
         >
           <Link
-            
+            to="#"
             className=" list-group-item-action sidebar-homebage-ul-li-aa"
             aria-current="true" style={{ background: '#F1F2F4', fontSize: '14px' }}
             onClick={()=>switchJobs("Best Matches")}

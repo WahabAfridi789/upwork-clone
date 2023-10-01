@@ -10,6 +10,8 @@ export default function LoginHeader() {
 
     const { pathname } = useLocation();
 
+    console.log(pathname);
+
     return (
         <header className="py-3" style={{ backgroundColor: "#1d4354" }}>
             <div className="container d-flex justify-content-between">

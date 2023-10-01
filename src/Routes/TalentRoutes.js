@@ -50,7 +50,7 @@ export default function TalentRoutes() {
             <Route path="/" exact element={<HomeTalent/>} />
             <Route path="/Search/:searchValue" exact element={<Search/>} />
             <Route path="/Search" exact element={<Search/>} />
-            <Route path="/job/" exact element={<JobDetailsTalent/>} />
+            <Route path="/job" exact element={<JobDetailsTalent/>} />
             <Route path="/job/:id" exact element={<JobDetailsTalent/>} />
             <Route path="/job/apply/:id" exact element={<SubmitProposal/>} />
             <Route

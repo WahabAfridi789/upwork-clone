@@ -54,7 +54,7 @@ export default function HeaderSearchLg() {
   return (
     <>
       <form id="search-form-id" className="d-flex ms-4">
-        <Link className="btn position-relative search-btn-cn" onClick={searchDatabase}>
+        <Link to="#" className="btn position-relative search-btn-cn" onClick={searchDatabase}>
           <i className="fa fa-search text-white search-icon-cn"></i>
         </Link>
         <div className="dropdown search-type-cn">

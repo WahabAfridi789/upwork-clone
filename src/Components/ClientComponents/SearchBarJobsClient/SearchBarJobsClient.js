@@ -51,7 +51,7 @@ db.collection('talent')
           className="form-control text-dark bg-white btn-outline-success"
           placeholder={t("Search For Jobs")}
         />
-        <Link >
+        <Link to ="#" >
           <button
             id="search-button"
             type="button"

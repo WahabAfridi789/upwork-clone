@@ -11,25 +11,60 @@ export default function Proposals() {
   const { t } = useTranslation();
   const [talentData, setTalentData] = useState({ active: [], submited: [] });
 
-  useEffect(async () => {
-    await db.collection("talent")
-      .doc(auth.currentUser.uid)
-      .collection("jobProposal")
-      .get()
-      .then(res => {
-        res.docs.map(proposal => {
-          if (proposal.exists) {
-            if (proposal.data().status === "contract") {
-              talentData.active.push(proposal.data());
-            } else {
-              talentData.submited.push(proposal.data());
-            }
+//   useEffect(async () => {
+//     await db.collection("talent")
+//       .doc(auth.currentUser.uid)
+//       .collection("jobProposal")
+//       .get()
+//       .then(res => {
+//         res.docs.map(proposal => {
+//           if (proposal.exists) {
+//             if (proposal.data().status === "contract") {
+//               talentData.active.push(proposal.data());
+//             } else {
+//               talentData.submited.push(proposal.data());
+//             }
+//           }
+//         });
+//         setTalentData({ active: [...talentData.active], submited: [...talentData.submited] });
+//       });
+//     console.log(talentData);
+//   }, []);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const proposalData = await db
+        .collection("talent")
+        .doc(auth.currentUser.uid)
+        .collection("jobProposal")
+        .get();
+
+      const newTalentData = {
+        active: [],
+        submited: [],
+      };
+
+      proposalData.docs.forEach((proposal) => {
+        if (proposal.exists) {
+          if (proposal.data().status === "contract") {
+            newTalentData.active.push(proposal.data());
+          } else {
+            newTalentData.submited.push(proposal.data());
           }
-        });
-        setTalentData({ active: [...talentData.active], submited: [...talentData.submited] });
+        }
       });
-    console.log(talentData);
-  }, []);
+
+      setTalentData({ ...newTalentData });
+    } catch (error) {
+      // Handle any errors here
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
   return (
     <>

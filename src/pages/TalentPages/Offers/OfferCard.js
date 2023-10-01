@@ -8,19 +8,43 @@ export default function OfferCard({ clientID, jobID, getOffers }) {
     const [offer, setOffer] = useState()
     const [job, setJob] = useState()
 
-    useEffect(async () => {
-        await db.collection("client")
-            .doc(clientID)
-            .collection("contracts").where("jobID", "==", jobID)
-            .get().then(res => {
-                setOffer({ data: res.docs[0]?.data(), contractId: res.docs[0]?.id })
-            })
-        await db.collection("job")
-            .doc(jobID)
-            .get().then(doc => {
-                setJob(doc.data())
-            })
-    }, [])
+    // useEffect(async () => {
+    //     await db.collection("client")
+    //         .doc(clientID)
+    //         .collection("contracts").where("jobID", "==", jobID)
+    //         .get().then(res => {
+    //             setOffer({ data: res.docs[0]?.data(), contractId: res.docs[0]?.id })
+    //         })
+    //     await db.collection("job")
+    //         .doc(jobID)
+    //         .get().then(doc => {
+    //             setJob(doc.data())
+    //         })
+    // }, [])
+
+    useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const clientContracts = await db
+        .collection("client")
+        .doc(clientID)
+        .collection("contracts")
+        .where("jobID", "==", jobID)
+        .get();
+
+      setOffer({ data: clientContracts.docs[0]?.data(), contractId: clientContracts.docs[0]?.id });
+
+      const jobDoc = await db.collection("job").doc(jobID).get();
+      setJob(jobDoc.data());
+    } catch (error) {
+      // Handle any errors here
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
     const accept = (contractId) => {
         console.log(jobID);
