@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import firebaseApp, { auth, googleProvider } from "../../../firebase";
 import apple from "../../../assets/svg/apple.svg";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function LoginTemp() {
@@ -11,7 +11,7 @@ export default function LoginTemp() {
   const [emailError, setEmailErorr] = useState("");
   const [PasswordError, setPasswordErrorr] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const { push } = useHistory();
+  const navigation = useNavigate();
 
   const { t } = useTranslation();
 
@@ -61,8 +61,8 @@ export default function LoginTemp() {
         if (res.user) {
           localStorage.setItem("userType", res.user.displayName);
           res.user.displayName === "talent"
-            ? push("/find-work")
-            : push("/home");
+            ? navigation("/find-work")
+            : navigation("/home");
         }
       })
       .catch((error) => {

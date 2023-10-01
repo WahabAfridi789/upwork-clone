@@ -5,7 +5,7 @@ import ShowMore from 'react-show-more-button/dist/module';
 import { SearchContext } from "../../../Context/SearchContext";
 import { updateUserData } from "../../../Network/Network";
 import { clientDataAction } from "../../../Store/actions/clientData";
-import searchSvg from '../../../assets/svg/search.svg'
+// import searchSvg from '../../../assets/svg/search.svg'
 import { Link } from "react-router-dom";
 
 
@@ -53,7 +53,7 @@ export default function TalentCardSearch() {
 
                             <h6 className="text-center " style={{ color: '#124C82' }}>Please try adjusting your search keywords or filters</h6>
 
-                            <img className='mx-auto d-block' src={searchSvg} />
+                            {/* <img className='mx-auto d-block' src={searchSvg} /> */}
 
                         </div>
                         :

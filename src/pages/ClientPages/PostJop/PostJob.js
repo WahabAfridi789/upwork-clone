@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PostJobAside from '../../../Components/ClientComponents/PostJobAside/PostJobAside'
 import PostJobTitle from './../../../Components/ClientComponents/PostJobTitle/PostJobTitle';
 import PostJobDescription from './../../../Components/ClientComponents/PostJobDescription/PostJobDescription';
@@ -37,7 +37,7 @@ export default function PostJob() {
                         <PostJobAside btns={btns} />
                     </div>
                     <div className="col-lg-9">
-                        <Switch>
+                        <Routes>
                             <Route path="/post-job" exact>
                                 <PostJobGetStarted start={start} isStart={isStart} setBtns={setBtns} btns={btns} />
                             </Route>
@@ -62,7 +62,7 @@ export default function PostJob() {
                             <Route path="/post-job/review" exact>
                                 <PostJobReview />
                             </Route>
-                        </Switch>
+                        </Routes>
                     </div>
                 </div>
             </div>

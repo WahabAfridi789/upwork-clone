@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../../../firebase";
 import IncomeMsg from "./IncomeMsg";
 import OutgoingMsg from "./OutgoingMsg";
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 let unSubscribe;
 
 export default function MesssagesContent() {
